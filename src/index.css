@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+/* ── Neon glow keyframes ─────────────────────────────────── */
+@keyframes neon-pulse-yellow {
+  0%, 100% {
+    box-shadow:
+      0 0 6px #facc15,
+      0 0 20px #facc15,
+      0 0 40px #ca8a04;
+  }
+  50% {
+    box-shadow:
+      0 0 10px #fde68a,
+      0 0 35px #facc15,
+      0 0 65px #ca8a04;
+  }
+}
+
+@keyframes neon-pulse-green {
+  0%, 100% {
+    box-shadow:
+      0 0 8px #4ade80,
+      0 0 24px #22c55e,
+      0 0 50px #16a34a;
+  }
+  50% {
+    box-shadow:
+      0 0 14px #86efac,
+      0 0 40px #4ade80,
+      0 0 80px #22c55e;
+  }
+}
+
+@keyframes neon-pulse-red {
+  0%, 100% {
+    box-shadow:
+      0 0 8px #f87171,
+      0 0 24px #ef4444,
+      0 0 50px #dc2626;
+  }
+  50% {
+    box-shadow:
+      0 0 14px #fca5a5,
+      0 0 40px #f87171,
+      0 0 80px #ef4444;
+  }
+}
+
+@keyframes title-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 10px #facc15,
+      0 0 30px #facc15,
+      0 0 60px #ca8a04;
+  }
+  50% {
+    text-shadow:
+      0 0 18px #fde68a,
+      0 0 50px #facc15,
+      0 0 90px #ca8a04;
+  }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes btn-press-glow {
+  0% { box-shadow: 0 0 30px #3b82f6, 0 0 60px #1d4ed8; }
+  100% { box-shadow: 0 0 60px #60a5fa, 0 0 120px #3b82f6; }
+}
+
+/* ── Utility classes ─────────────────────────────────────── */
+.led-red-on {
+  animation: neon-pulse-red 0.8s ease-in-out infinite;
+}
+
+.led-yellow-on {
+  animation: neon-pulse-yellow 0.8s ease-in-out infinite;
+}
+
+.led-green-on {
+  animation: neon-pulse-green 0.6s ease-in-out infinite;
+}
+
+.title-glow {
+  animation: title-glow 2s ease-in-out infinite;
+}
+
+.btn-glow-blue {
+  animation: btn-press-glow 1.5s ease-in-out infinite alternate;
+}
+
+.scanline-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.04) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.font-digital {
+  font-family: 'Courier New', Courier, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+}
